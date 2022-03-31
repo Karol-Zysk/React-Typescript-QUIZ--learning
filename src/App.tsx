@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { fetchQuizQuestions } from "./components/API";
-import { GlobalStyle, Wrapper } from "./components/App.styles";
+import { GlobalStyle, Wrapper,  } from "./components/App.styles";
 import { FaReact } from "react-icons/fa";
 
 //components
@@ -73,10 +73,12 @@ function App() {
     <>
       <GlobalStyle />
       <Wrapper>
-        <h1>
-          <FaReact style={{ fontSize: "4rem" }} />
-          QUIZ
-        </h1>
+        
+          <h1>
+            <span className="react_icon">&#x269B;</span> QUIZ
+          </h1>
+        
+
         {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
           <button className="start" onClick={startQuiz}>
             Start

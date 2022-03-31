@@ -31,24 +31,44 @@ export const Wrapper = styled.div`
   }
 
   .score {
-    color: #fff;
-    font-size: 2rem;
+    color: white;
+    font-size: 3rem;
     margin: 0;
+    text-shadow: 3px 0px 1px black;
+    font-weight: bold;
   }
 
   h1 {
-    background-image: linear-gradient(180deg, rgba(100,100,100, 0.5), transparent);
-    background-size: 100%;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-fill-color: transparent;
-    -moz-fill-color: black;
-    -moz-background-clip: text;
-    filter: drop-shadow(2px 2px black);
-    font-size: 90px;
+    text-shadow: 2px 3px 4px black;
+    color: white;
+    font-size: 5rem;
     font-weight: bold;
-    color: transparent;
-    text-align: center;
-    margin: 20px;
+    display: flex;
+    align-items: center;
+  }
+  .react_icon {
+    font-weight: 500;
+    font-size: 9rem;
+  }
+
+  .start,
+  .next {
+    cursor: pointer;
+    background: 
+      rgba(255, 255, 255, 0.95);
+    border: 2px solid none;
+    border-radius: 10px;
+    box-shadow: 3px 2px 1px black;
+    font-size: 1.5rem;
+    padding: 5px;
+    width: 100%;
+    font-weight: bold;
+    transition: all 300ms ease-in-out ;
+  }
+  .start:hover,
+  .next:hover {
+    background: 
+    rgba(200, 200, 200, 0.7);
+   
   }
 `;
