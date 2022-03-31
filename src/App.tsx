@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { fetchQuizQuestions } from "./components/API";
-import { GlobalStyle, Wrapper,  } from "./components/App.styles";
-import { FaReact } from "react-icons/fa";
+import { GlobalStyle, Wrapper } from "./components/App.styles";
 
 //components
 import QuestionCard from "./components/QuestionCard";
@@ -16,7 +15,7 @@ export type AnswerObject = {
   correctAnswer: string;
 };
 
-const TOTAL_QUESTIONS = 15;
+const TOTAL_QUESTIONS = 5;
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -25,6 +24,7 @@ function App() {
   const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
+  const [finalScore, setFinalScore] = useState<number>();
 
   const startQuiz = async () => {
     setLoading(true);
@@ -69,15 +69,26 @@ function App() {
       setNumber(nextQuestion);
     }
   };
+
+  useEffect(() => {
+    if (userAnswers.length === TOTAL_QUESTIONS) {
+      setFinalScore(score);
+      console.log(finalScore);
+    }
+  }, [score, finalScore, number, userAnswers.length]);
+
   return (
     <>
       <GlobalStyle />
       <Wrapper>
-        
+        <h1>
+          <p className="react_icon">&#x269B;</p> QUIZ
+        </h1>
+        {finalScore && (
           <h1>
-            <span className="react_icon">&#x269B;</span> QUIZ
+            <p className="react_icon"></p> {finalScore}
           </h1>
-        
+        )}
 
         {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
           <button className="start" onClick={startQuiz}>

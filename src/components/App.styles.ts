@@ -44,7 +44,14 @@ export const Wrapper = styled.div`
     font-size: 5rem;
     font-weight: bold;
     display: flex;
+    height: min-content;
     align-items: center;
+    margin: 0;
+  }
+  p{
+    height: min-content;
+    margin: 0;
+    padding: 0;
   }
   .react_icon {
     font-weight: 500;
