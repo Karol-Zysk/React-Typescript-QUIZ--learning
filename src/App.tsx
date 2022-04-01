@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import { fetchQuizQuestions } from "./components/API";
-import { GlobalStyle, Wrapper } from "./components/App.styles";
+import { GlobalStyle, Wrapper, Modal } from "./components/App.styles";
+import { link } from "./components/API";
 
 //components
 import QuestionCard from "./components/QuestionCard";
 
 //Types
 import { QuestionState, Difficulty } from "./components/API";
+import HallOfFame from "./components/HallOfFame";
 
 export type AnswerObject = {
   question: string;
@@ -24,7 +26,11 @@ function App() {
   const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
-  const [finalScore, setFinalScore] = useState<number>();
+  const [finalScore, setFinalScore] = useState<number>(0);
+  const [nickName, setNickName] = useState<string>("");
+  const [showModal, setShowModal] = useState<boolean>(false);
+
+  
 
   const startQuiz = async () => {
     setLoading(true);
@@ -73,9 +79,32 @@ function App() {
   useEffect(() => {
     if (userAnswers.length === TOTAL_QUESTIONS) {
       setFinalScore(score);
+      setShowModal(true);
       console.log(finalScore);
     }
   }, [score, finalScore, number, userAnswers.length]);
+
+  const setNickNameHandler = (event: { target: { value: any } }) => {
+    const value = event.target.value;
+    setNickName(value);
+  };
+  const addResult = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+
+    const result = {
+      score: finalScore,
+      nickName: nickName,
+    };
+
+    fetch(link, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(result),
+    }).then(() => {
+      console.log("new result added");
+      setShowModal(false);
+    });
+  };
 
   return (
     <>
@@ -84,12 +113,17 @@ function App() {
         <h1>
           <p className="react_icon">&#x269B;</p> QUIZ
         </h1>
-        {finalScore && (
-          <h1>
-            <p className="react_icon"></p> {finalScore}
-          </h1>
-        )}
 
+        <Modal showModal={showModal}>
+          <div>
+            <h2>Great job. Your Score: {finalScore}</h2>
+
+            <label>Your Nickname</label>
+            <input type="text" value={nickName} onChange={setNickNameHandler} />
+            <button onClick={addResult}>xxx</button>
+          </div>
+        </Modal>
+        <HallOfFame showModal={showModal} />
         {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
           <button className="start" onClick={startQuiz}>
             Start

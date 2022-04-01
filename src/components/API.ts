@@ -31,3 +31,6 @@ export const fetchQuizQuestions = async (
     ]),
   }));
 };
+
+
+export const link = "https://stbible.herokuapp.com/api/results";

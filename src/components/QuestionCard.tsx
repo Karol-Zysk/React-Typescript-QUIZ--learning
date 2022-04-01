@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+
 //Types
 import { AnswerObject } from "../App";
 //Styles

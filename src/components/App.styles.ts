@@ -48,7 +48,7 @@ export const Wrapper = styled.div`
     align-items: center;
     margin: 0;
   }
-  p{
+  p {
     height: min-content;
     margin: 0;
     padding: 0;
@@ -61,8 +61,7 @@ export const Wrapper = styled.div`
   .start,
   .next {
     cursor: pointer;
-    background: 
-      rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.95);
     border: 2px solid none;
     border-radius: 10px;
     box-shadow: 3px 2px 1px black;
@@ -70,12 +69,34 @@ export const Wrapper = styled.div`
     padding: 5px;
     width: 100%;
     font-weight: bold;
-    transition: all 300ms ease-in-out ;
+    transition: all 300ms ease-in-out;
   }
   .start:hover,
   .next:hover {
-    background: 
-    rgba(200, 200, 200, 0.7);
-   
+    background: rgba(200, 200, 200, 0.7);
+  }
+`;
+
+type ModalProps = {
+  showModal: boolean;
+};
+
+export const Modal = styled.div<ModalProps>`
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: ${({ showModal }) => (showModal ? "block" : "none")};
+
+  div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
   }
 `;
