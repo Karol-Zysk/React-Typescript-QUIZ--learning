@@ -30,8 +30,6 @@ function App() {
   const [nickName, setNickName] = useState<string>("");
   const [showModal, setShowModal] = useState<boolean>(false);
 
-  
-
   const startQuiz = async () => {
     setLoading(true);
     setGameOver(false);
@@ -77,12 +75,11 @@ function App() {
   };
 
   useEffect(() => {
-    if (userAnswers.length === TOTAL_QUESTIONS) {
+    if (!loading && userAnswers.length === TOTAL_QUESTIONS) {
       setFinalScore(score);
       setShowModal(true);
-      console.log(finalScore);
     }
-  }, [score, finalScore, number, userAnswers.length]);
+  }, [score, gameOver, userAnswers.length, loading]);
 
   const setNickNameHandler = (event: { target: { value: any } }) => {
     const value = event.target.value;

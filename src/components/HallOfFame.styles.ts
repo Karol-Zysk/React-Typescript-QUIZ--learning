@@ -10,3 +10,24 @@ export const Wrapper = styled.div`
   top: 0;
   position: absolute;
 `;
+
+export const Grid = styled.div`
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 0.5fr 1fr;
+  div {
+    border-right: 1px solid black;
+    padding: 4px;
+    padding-left: 8px;
+  }
+`;
+
+export const GridTop = styled.div`
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 0.5fr 1fr;
+
+  div {
+    border: 1px solid black;
+    padding: 4px;
+    font-weight: bold;
+  }
+`;
