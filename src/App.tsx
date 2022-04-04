@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { fetchQuizQuestions } from "./components/API";
-import { GlobalStyle, Wrapper } from "./components/App.styles";
+import { Game, GlobalStyle, Wrapper } from "./components/App.styles";
 import { link } from "./components/API";
 
 //components
@@ -11,6 +11,7 @@ import { QuestionState, Difficulty } from "./components/API";
 import HallOfFame from "./components/HallOfFame";
 import Navbar from "./components/Navbar";
 import { Modal } from "./Modal";
+import { Button } from "./components/Button";
 
 export type AnswerObject = {
   question: string;
@@ -31,7 +32,10 @@ function App() {
   const [finalScore, setFinalScore] = useState<number>(0);
   const [nickName, setNickName] = useState<string>("");
   const [showModal, setShowModal] = useState<boolean>(false);
-
+  const [quiz, setQuiz] = useState<boolean>(false);
+  const [disableButton, setDisableButton] = useState<boolean>(false);
+  const [showHallOfFame, setShowHallOfFame] = useState<boolean>(false);
+  
   const startQuiz = async () => {
     setLoading(true);
     setGameOver(false);
@@ -78,8 +82,12 @@ function App() {
 
   useEffect(() => {
     if (!loading && userAnswers.length === TOTAL_QUESTIONS) {
+      setDisableButton(true);
       setFinalScore(score);
-      setShowModal(true);
+      setTimeout(() => {
+        setShowModal(true);
+        setDisableButton(false);
+      }, 2000);
     }
   }, [score, gameOver, userAnswers.length, loading]);
 
@@ -101,16 +109,53 @@ function App() {
       body: JSON.stringify(result),
     }).then(() => {
       console.log("new result added");
-      setShowModal(false);
+      setTimeout(() => {
+        setShowModal(false);
+      }, 500);
     });
   };
 
   return (
     <>
       <GlobalStyle />
+      <Navbar
+        setQuiz={setQuiz}
+        quiz={quiz}
+        setShowHallOfFame={setShowHallOfFame}
+        showHallOfFame={showHallOfFame}
+      />
       <Wrapper>
-        <Navbar />
+        <Game>
+          {(quiz && gameOver) || userAnswers.length === TOTAL_QUESTIONS ? (
+            <Button
+              disabled={disableButton}
+              show={userAnswers.length === TOTAL_QUESTIONS}
+              startQuiz={startQuiz}
+            ></Button>
+          ) : null}
+          {!gameOver ? <p className="score">Score: {score}</p> : null}
+          {loading && <p>Loading Questions</p>}
+          {!loading && !gameOver && (
+            <QuestionCard
+              questionNr={number + 1}
+              totalQuestion={TOTAL_QUESTIONS}
+              question={questions[number].question}
+              answers={questions[number].answers}
+              userAnswer={userAnswers ? userAnswers[number] : undefined}
+              callback={checkAnswer}
+            />
+          )}
+          {!gameOver &&
+          !loading &&
+          userAnswers.length === number + 1 &&
+          number !== TOTAL_QUESTIONS - 1 ? (
+            <button className="next" onClick={nextQuestion}>
+              Next
+            </button>
+          ) : null}
+        </Game>
 
+        <HallOfFame showHallOfFame={showHallOfFame} showModal={showModal} />
         <Modal
           showModal={showModal}
           finalScore={finalScore}
@@ -118,32 +163,6 @@ function App() {
           nickName={nickName}
           addResult={addResult}
         ></Modal>
-        <HallOfFame showModal={showModal} />
-        {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
-          <button className="start" onClick={startQuiz}>
-            Start
-          </button>
-        ) : null}
-        {!gameOver ? <p className="score">Score: {score}</p> : null}
-        {loading && <p>Loading Questions</p>}
-        {!loading && !gameOver && (
-          <QuestionCard
-            questionNr={number + 1}
-            totalQuestion={TOTAL_QUESTIONS}
-            question={questions[number].question}
-            answers={questions[number].answers}
-            userAnswer={userAnswers ? userAnswers[number] : undefined}
-            callback={checkAnswer}
-          />
-        )}
-        {!gameOver &&
-        !loading &&
-        userAnswers.length === number + 1 &&
-        number !== TOTAL_QUESTIONS - 1 ? (
-          <button className="next" onClick={nextQuestion}>
-            Next
-          </button>
-        ) : null}
       </Wrapper>
     </>
   );

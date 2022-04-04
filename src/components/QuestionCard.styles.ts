@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  min-width: 40%;
-  max-width: 40%;
+  min-width: 100%;
+  max-width: 100%;
   @media (max-width: 1000px) {
     min-width: 60%;
     max-width: 60%;
@@ -24,9 +24,7 @@ export const Wrapper = styled.div`
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
   text-align: center;
   margin-bottom: 1rem;
-  position: absolute;
-  top: 20%;
-  left: -100%;
+
   transition: all 300ms;
 
   p {

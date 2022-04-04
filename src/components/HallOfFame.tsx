@@ -5,10 +5,13 @@ import axios from "axios";
 
 type Props = {
   showModal: boolean;
+  showHallOfFame: boolean;
 };
 
-const HallOfFame: React.FC<Props> = (showModal) => {
+const HallOfFame: React.FC<Props> = ({ showModal, showHallOfFame }) => {
   const [data, setData] = useState<any[]>([]);
+
+  console.log(showHallOfFame);
 
   type Result = {
     result: {};
@@ -26,9 +29,8 @@ const HallOfFame: React.FC<Props> = (showModal) => {
   const bestResults = data.sort((a, b) => {
     return b.score - a.score;
   });
-
   return (
-    <Wrapper>
+    <Wrapper showHallOfFame={showHallOfFame}>
       <GridTop>
         <div>Place</div>
         <div>Name</div>

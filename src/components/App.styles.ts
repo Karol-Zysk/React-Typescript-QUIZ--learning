@@ -1,5 +1,4 @@
 import styled, { createGlobalStyle } from "styled-components";
-import BGImg from "./img/background.jpg";
 
 export const GlobalStyle = createGlobalStyle`
 html{
@@ -7,7 +6,7 @@ html{
      
 }
 body{
-    background-image: url(${BGImg});
+    background-color: black;
     background-size: cover;
     margin: 0;
     padding: 0;
@@ -25,7 +24,8 @@ body{
 export const Wrapper = styled.div`
   width: 100vw;
   display: flex;
-  flex-direction: column;
+
+  flex-direction: row;
   align-items: center;
   > p {
     color: white;
@@ -98,9 +98,10 @@ export const Wrapper = styled.div`
     box-shadow: 3px 2px 1px black;
     font-size: 1.5rem;
     padding: 5px;
+    margin-top: 2rem;
 
-    min-width: 40%;
-    max-width: 40%;
+    min-width: 100%;
+    max-width: 100%;
     @media (max-width: 1000px) {
       min-width: 60%;
       max-width: 60%;
@@ -121,4 +122,15 @@ export const Wrapper = styled.div`
   .next:hover {
     background: rgba(200, 200, 200, 0.7);
   }
+`;
+
+export const Game = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: inherit;
 `;

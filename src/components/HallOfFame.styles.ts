@@ -1,16 +1,19 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
-  width: 40%;
-  height: auto;
+type showHall = {
+  showHallOfFame: boolean;
+};
+
+export const Wrapper = styled.div<showHall>`
+  height: 100vh;
   background: transparent;
   font-size: 1rem;
+  width: 50%;
+  transition: all 1s ease;
+  transform: ${({ showHallOfFame }) =>
+    showHallOfFame ? "scale(100%)" : "scale(0%)"};
+  position: relative;
 
-  padding: 2rem;
-  color: black;
-  left: 0;
-  top: 0;
-  position: absolute;
   @media (max-width: 1000px) {
     font-size: 0.9rem;
     width: 45%;
