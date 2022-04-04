@@ -32,16 +32,17 @@ const HallOfFame: React.FC<Props> = (showModal) => {
       <GridTop>
         <div>Place</div>
         <div>Name</div>
-        <div>Score </div> <div>Date:</div>
+        <div>Pts </div> <div>Date:</div>
       </GridTop>
-      <div></div>
-      {bestResults.map((result: Result, index) => {
+      {bestResults.slice(0, 15)?.map((result: Result, index) => {
         return (
-          <Grid key={index}>
-            <div>{index + 1}.</div>
-            <div>{result.nickName}</div>
-            <div>{result.score}</div>{" "}
-            <div>{result.date.toString().slice(0, 20)}</div>
+          <Grid key={index} tabNumber={index}>
+            <div className="place">
+              <span>{index + 1}.</span>
+            </div>
+            <div className="nickName">{result.nickName}</div>
+            <div className="tab_score">{result.score}</div>{" "}
+            <div className="date">{result.date.toString().slice(0, 20)}</div>
           </Grid>
         );
       })}

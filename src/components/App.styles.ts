@@ -23,6 +23,7 @@ body{
 `;
 
 export const Wrapper = styled.div`
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,9 +34,15 @@ export const Wrapper = styled.div`
   .score {
     color: white;
     font-size: 3rem;
-    margin: 0;
-    text-shadow: 3px 0px 1px black;
-    font-weight: bold;
+    @media (max-width: 1000px) {
+      font-size: 2.5rem;
+    }
+  }
+  @media (max-width: 650px) {
+    font-size: 2rem;
+  }
+  @media (max-width: 450px) {
+    font-size: 3rem;
   }
 
   h1 {
@@ -47,6 +54,18 @@ export const Wrapper = styled.div`
     height: min-content;
     align-items: center;
     margin: 0;
+    @media (max-width: 1000px) {
+      font-size: 4rem;
+    }
+    @media (max-width: 800px) {
+      font-size: 3.5rem;
+    }
+    @media (max-width: 600px) {
+      font-size: 3rem;
+    }
+    @media (max-width: 450px) {
+      font-size: 2rem;
+    }
   }
   p {
     height: min-content;
@@ -55,7 +74,19 @@ export const Wrapper = styled.div`
   }
   .react_icon {
     font-weight: 500;
-    font-size: 9rem;
+    font-size: 8rem;
+    @media (max-width: 1000px) {
+      font-size: 5rem;
+    }
+    @media (max-width: 800px) {
+      font-size: 4.5rem;
+    }
+    @media (max-width: 600px) {
+      font-size: 4rem;
+    }
+    @media (max-width: 450px) {
+      font-size: 3rem;
+    }
   }
 
   .start,
@@ -67,36 +98,27 @@ export const Wrapper = styled.div`
     box-shadow: 3px 2px 1px black;
     font-size: 1.5rem;
     padding: 5px;
-    width: 100%;
+
+    min-width: 40%;
+    max-width: 40%;
+    @media (max-width: 1000px) {
+      min-width: 60%;
+      max-width: 60%;
+    }
+    @media (max-width: 800px) {
+      min-width: 80%;
+      max-width: 80%;
+    }
+    @media (max-width: 600px) {
+      min-width: 90%;
+      max-width: 90%;
+      padding: 10px;
+    }
     font-weight: bold;
     transition: all 300ms ease-in-out;
   }
   .start:hover,
   .next:hover {
     background: rgba(200, 200, 200, 0.7);
-  }
-`;
-
-type ModalProps = {
-  showModal: boolean;
-};
-
-export const Modal = styled.div<ModalProps>`
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.8);
-  display: ${({ showModal }) => (showModal ? "block" : "none")};
-
-  div {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    flex-direction: column;
   }
 `;

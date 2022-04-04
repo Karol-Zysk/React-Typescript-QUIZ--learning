@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { fetchQuizQuestions } from "./components/API";
-import { GlobalStyle, Wrapper, Modal } from "./components/App.styles";
+import { GlobalStyle, Wrapper } from "./components/App.styles";
 import { link } from "./components/API";
 
 //components
@@ -9,6 +9,8 @@ import QuestionCard from "./components/QuestionCard";
 //Types
 import { QuestionState, Difficulty } from "./components/API";
 import HallOfFame from "./components/HallOfFame";
+import Navbar from "./components/Navbar";
+import { Modal } from "./Modal";
 
 export type AnswerObject = {
   question: string;
@@ -107,19 +109,15 @@ function App() {
     <>
       <GlobalStyle />
       <Wrapper>
-        <h1>
-          <p className="react_icon">&#x269B;</p> QUIZ
-        </h1>
+        <Navbar />
 
-        <Modal showModal={showModal}>
-          <div>
-            <h2>Great job. Your Score: {finalScore}</h2>
-
-            <label>Your Nickname</label>
-            <input type="text" value={nickName} onChange={setNickNameHandler} />
-            <button onClick={addResult}>xxx</button>
-          </div>
-        </Modal>
+        <Modal
+          showModal={showModal}
+          finalScore={finalScore}
+          setNickNameHandler={setNickNameHandler}
+          nickName={nickName}
+          addResult={addResult}
+        ></Modal>
         <HallOfFame showModal={showModal} />
         {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
           <button className="start" onClick={startQuiz}>

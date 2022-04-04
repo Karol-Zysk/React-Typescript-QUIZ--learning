@@ -1,17 +1,39 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  width: 500px;
+  min-width: 40%;
+  max-width: 40%;
+  @media (max-width: 1000px) {
+    min-width: 60%;
+    max-width: 60%;
+  }
+  @media (max-width: 800px) {
+    min-width: 80%;
+    max-width: 80%;
+  }
+  @media (max-width: 600px) {
+    min-width: 90%;
+    max-width: 90%;
+    padding: 10px;
+  }
   background: rgba(255, 255, 255, 0.8);
   border-radius: 10px;
   border: 2px solid black;
   padding: 20px;
+
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
   text-align: center;
   margin-bottom: 1rem;
+  position: absolute;
+  top: 20%;
+  left: -100%;
+  transition: all 300ms;
 
   p {
     font-size: 1rem;
+    @media (max-width: 600px) {
+      font-size: 0.9rem;
+    }
   }
 `;
 
@@ -29,6 +51,11 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
     cursor: pointer;
     user-select: none;
     font-size: 1rem;
+    @media (max-width: 600px) {
+      font-size: 0.9rem;
+      padding: 0.7rem;
+      width: 90%;
+    }
     width: 100%;
     padding: 0.8rem;
     margin: 5px 0px;
