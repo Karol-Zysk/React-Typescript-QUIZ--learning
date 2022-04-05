@@ -5,14 +5,31 @@ type showHall = {
 };
 
 export const Wrapper = styled.div<showHall>`
-  height: 100vh;
-  background: transparent;
+  border: 3px solid goldenrod;
+  color: white;
+
+  border: 2px solid white;
+
+  background: linear-gradient(
+    132deg,
+    rgba(121, 0, 195, 0.5) 0%,
+    rgba(169, 0, 177, 0.5) 100%
+  );
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 25px;
   font-size: 1rem;
-  width: 50%;
-  transition: all 1s ease;
+  width: 30%;
+  height: 80vh;
+  position: fixed;
+  top: 17vh;
+  left: 0;
+  z-index: 1400;
   transform: ${({ showHallOfFame }) =>
-    showHallOfFame ? "scale(100%)" : "scale(0%)"};
-  position: relative;
+    showHallOfFame ? "translateX(500%)" : "translateX(215%)"};
+  transition: all 300ms ease-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   @media (max-width: 1000px) {
     font-size: 0.9rem;
@@ -45,8 +62,8 @@ export const Grid = styled.div<Prop>`
       : tabNumber === 2
       ? "linear-gradient(90deg, rgba(247,110,46,0.7) 0%, rgba(240,144,8,0.7) 41%, rgba(209,108,0,0.7) 100%)"
       : tabNumber % 2
-      ? "rgba(255,255,255,0.25)"
-      : "rgba(0,0,0,0.25)"};
+      ? "rgba(255,255,255,0.1)"
+      : "none"};
   .tab_score,
   .place {
     justify-content: center;
@@ -77,6 +94,7 @@ export const Grid = styled.div<Prop>`
   }
   div {
     border-right: 1px solid black;
+    border-bottom: 1px solid black;
     padding: 4px;
     padding-left: 8px;
     display: flex;
@@ -88,8 +106,10 @@ export const GridTop = styled.div`
   grid-template-columns: 0.6fr 1fr 0.6fr 1fr;
 
   div {
-    border: 1px solid black;
-    padding: 4px;
+    border-right: 1px solid black;
+
+    padding: 8px;
+    padding-left: 10px;
     font-weight: bold;
   }
 `;

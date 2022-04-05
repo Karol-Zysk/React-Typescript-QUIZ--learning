@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { fetchQuizQuestions } from "./components/API";
 import { Game, GlobalStyle, Wrapper } from "./components/App.styles";
+// import crown from "./components/img/crown.png";
+import questionmark from "./components/img/questionmark.png";
 import { link } from "./components/API";
 
 //components
@@ -34,8 +36,8 @@ function App() {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [quiz, setQuiz] = useState<boolean>(false);
   const [disableButton, setDisableButton] = useState<boolean>(false);
-  const [showHallOfFame, setShowHallOfFame] = useState<boolean>(false);
-  
+  const [showHallOfFame, setShowHallOfFame] = useState<boolean>(true);
+
   const startQuiz = async () => {
     setLoading(true);
     setGameOver(false);
@@ -125,6 +127,11 @@ function App() {
         showHallOfFame={showHallOfFame}
       />
       <Wrapper>
+        <div className="x">
+          <img className="y" src={questionmark} alt="questionmark" />
+        </div>
+
+        {/* {quiz && <Image src={crown} />} */}
         <Game>
           {(quiz && gameOver) || userAnswers.length === TOTAL_QUESTIONS ? (
             <Button

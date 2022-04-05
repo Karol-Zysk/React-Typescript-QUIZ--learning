@@ -17,7 +17,7 @@ const Navbar: React.FC<Props> = ({
   return (
     <Wrapper>
       <p>
-        <h1 onClick={() => setQuiz(!quiz)} data-replace="Quiz">
+        <h1 onClick={() => setQuiz(true)} data-replace="Quiz">
           <span>Quiz</span>
         </h1>{" "}
       </p>

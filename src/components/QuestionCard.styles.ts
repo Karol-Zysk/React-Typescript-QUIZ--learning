@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  min-width: 100%;
-  max-width: 100%;
+  color: white;
+  
+  min-width: 50%;
+  max-width: 50%;
   @media (max-width: 1000px) {
     min-width: 60%;
     max-width: 60%;
@@ -16,9 +18,13 @@ export const Wrapper = styled.div`
     max-width: 90%;
     padding: 10px;
   }
-  background: rgba(255, 255, 255, 0.8);
+  background: linear-gradient(
+    132deg,
+    rgba(121, 0, 195, 0.5) 0%,
+    rgba(169, 0, 177, 0.5) 100%
+  );
   border-radius: 10px;
-  border: 2px solid black;
+  border: 2px solid white;
   padding: 20px;
 
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
@@ -59,14 +65,14 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
     margin: 5px 0px;
     background: ${({ correct, userClicked }) =>
       correct
-        ? "linear-gradient(90deg,rgba(0, 255, 0, 0.8),rgba(255, 255, 255, 0.8) )"
+        ? "rgba(0, 255, 0, 0.5)"
         : !correct && userClicked
-        ? "linear-gradient(90deg,rgba(255, 0, 0, 0.8),rgba(255, 255, 255, 0.8) )"
-        : "linear-gradient(90deg,rgba(0, 0, 0, 0.8),rgba(255, 255, 255, 0.8) )"};
-    border: 3px solid black;
+        ? "rgba(255, 0, 0, 0.5)"
+        : "rgba(0, 0, 0, 0.3)"};
+    border: 1px solid white;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
-    color: black;
+    color: white;
     font-weight: bold;
   }
 `;

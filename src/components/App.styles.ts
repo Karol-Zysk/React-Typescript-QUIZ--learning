@@ -19,14 +19,25 @@ body{
     font-family: 'Poppins', sans-serif;
 }
 
+@keyframes show {
+    from {
+      transform: translateX(0px);
+    }
+    to {
+      transform: translateX(-1200px);
+    }
+  }
+  
+  
+
 `;
 
 export const Wrapper = styled.div`
   width: 100vw;
-  display: flex;
+  height: 75vh;
+  padding-right: 30rem;
 
   flex-direction: row;
-  align-items: center;
   > p {
     color: white;
   }
@@ -87,21 +98,44 @@ export const Wrapper = styled.div`
     @media (max-width: 450px) {
       font-size: 3rem;
     }
+
+    .x {
+      max-width: 100px;
+      max-height: 100px;
+      animation: x 13s linear infinite alternate;
+    }
+
+    .y {
+      max-width: 100px;
+      height: 100px;
+      animation: y 7s linear infinite alternate;
+    }
+
+    @keyframes x {
+      100% {
+        transform: translateX(calc(100vw - 100px));
+      }
+    }
+
+    @keyframes y {
+      100% {
+        transform: translateY(calc(100vh - 100px));
+      }
+    }
   }
 
   .start,
   .next {
+    color: white;
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.95);
-    border: 2px solid none;
+    background: rgba(255, 255, 255, 0);
+    border: 2px solid white;
     border-radius: 10px;
     box-shadow: 3px 2px 1px black;
     font-size: 1.5rem;
-    padding: 5px;
-    margin-top: 2rem;
+    padding: 5px 1rem;
+    margin-top: 1rem;
 
-    min-width: 100%;
-    max-width: 100%;
     @media (max-width: 1000px) {
       min-width: 60%;
       max-width: 60%;
@@ -120,7 +154,7 @@ export const Wrapper = styled.div`
   }
   .start:hover,
   .next:hover {
-    background: rgba(200, 200, 200, 0.7);
+    background: rgba(200, 200, 200, 0.1);
   }
 `;
 
@@ -132,5 +166,15 @@ export const Game = styled.div`
   padding: 2rem;
   margin-left: auto;
   margin-right: auto;
-  width: inherit;
+  width: 100%;
+  min-height: auto;
+  margin-right: 35rem;
 `;
+
+// export const Image = styled.img`
+//   position: absolute;
+//   width: 20%;
+//   height: 30%;
+//   right: 10%;
+//   top: 35%;
+// `;
