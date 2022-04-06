@@ -7,7 +7,7 @@ type showHall = {
 export const Wrapper = styled.div<showHall>`
   border: 3px solid goldenrod;
   color: white;
-
+  overflow: hidden;
   border: 2px solid white;
 
   background: linear-gradient(
@@ -15,8 +15,8 @@ export const Wrapper = styled.div<showHall>`
     rgba(121, 0, 195, 0.5) 0%,
     rgba(169, 0, 177, 0.5) 100%
   );
-  border-top-right-radius: 25px;
-  border-bottom-left-radius: 25px;
+  border-top-right-radius: 35px;
+  border-bottom-left-radius: 35px;
   font-size: 1rem;
   width: 40%;
   height: auto;

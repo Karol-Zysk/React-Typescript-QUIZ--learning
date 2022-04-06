@@ -23,7 +23,7 @@ export type AnswerObject = {
   correctAnswer: string;
 };
 
-const TOTAL_QUESTIONS = 25;
+const TOTAL_QUESTIONS = 20;
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -90,7 +90,7 @@ function App() {
       setTimeout(() => {
         setShowModal(true);
         setDisableButton(false);
-      }, 2000);
+      }, 1500);
     }
   }, [score, gameOver, userAnswers.length, loading]);
 

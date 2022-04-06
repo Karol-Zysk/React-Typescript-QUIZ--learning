@@ -26,7 +26,12 @@ export const Modal: React.FC<Props> = ({
         <h1>Great job. Your Score: {finalScore} </h1>
 
         <label>Your Nickname</label>
-        <input type="text" value={nickName} onChange={setNickNameHandler} />
+        <input
+          type="text"
+          value={nickName}
+          maxLength={11}
+          onChange={setNickNameHandler}
+        />
         <button className="add_score" onClick={addResult}>
           Submit Score
         </button>
