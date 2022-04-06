@@ -129,11 +129,11 @@ function App() {
       <Wrapper>
         {quiz && <Image src={crown} />}
         <Game>
-          <QuestionMark moveValue={5} />
-          <QuestionMark moveValue={8} />
-          <QuestionMark moveValue={8} />
-          <QuestionMark moveValue={3} />
-          <QuestionMark moveValue={11} />
+          <QuestionMark moveValue={9} align={"baseline"} />
+          <QuestionMark moveValue={8} align={"flex-end"} />
+          <QuestionMark moveValue={5} align={"flex-end"} />
+          <QuestionMark moveValue={8} align={"baseline"} />
+           
           {(quiz && gameOver) || userAnswers.length === TOTAL_QUESTIONS ? (
             <Button
               disabled={disableButton}
