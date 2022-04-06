@@ -11,7 +11,6 @@ type Props = {
 const HallOfFame: React.FC<Props> = ({ showModal, showHallOfFame }) => {
   const [data, setData] = useState<any[]>([]);
 
-  console.log(showHallOfFame);
 
   type Result = {
     result: {};

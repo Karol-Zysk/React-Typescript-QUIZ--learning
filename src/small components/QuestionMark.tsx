@@ -50,7 +50,6 @@ const Wrapper = styled.div<Props>`
 `;
 
 export const QuestionMark: React.FC<Props> = ({ moveValue }) => {
-  console.log(moveValue);
 
   return (
     <Wrapper moveValue={moveValue}>

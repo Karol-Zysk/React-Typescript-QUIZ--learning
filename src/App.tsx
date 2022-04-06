@@ -39,7 +39,6 @@ function App() {
   const [disableButton, setDisableButton] = useState<boolean>(false);
   const [showHallOfFame, setShowHallOfFame] = useState<boolean>(true);
 
-  console.log(window.innerWidth);
   const startQuiz = async () => {
     setLoading(true);
     setGameOver(false);
@@ -112,7 +111,6 @@ function App() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(result),
     }).then(() => {
-      console.log("new result added");
       setTimeout(() => {
         setShowModal(false);
       }, 500);
