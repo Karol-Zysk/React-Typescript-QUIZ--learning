@@ -10,18 +10,46 @@ export const Wrapper = styled.div`
   align-items: center;
   z-index: 1;
   padding: 2rem;
+  @media (max-width: 600px) {
+    padding: 0.7rem;
+  }
   border-bottom: 4px solid white;
   h1 {
+    padding: 0.1rem 0.5rem;
     font-size: 2.8rem;
+    @media (max-width: 800px) {
+      font-size: 2.2rem;
+      padding: 0.2rem 0.5rem;
+    }
+    @media (max-width: 500px) {
+      font-size: 1.8rem;
+      padding: 0.2rem 0.5rem;
+    }
+  }
+  h2 {
+    padding: 0.1rem 0.5rem;
+    @media (max-width: 800px) {
+      font-size: 1.8rem;
+      padding: 0.1rem 0.5rem;
+    }
+    @media (max-width: 500px) {
+      font-size: 1.2rem;
+      padding: 0.2rem 0.5rem;
+    }
+    @media (max-width: 360px) {
+      font-size: 1.2rem;
+      padding: 0.2rem 0.5rem;
+    }
   }
   h2,
   h1 {
     border: 3px solid rgba(255, 255, 255, 0.6);
     border-radius: 10px;
-    padding: 0 2rem;
+    /* padding: 0.5rem 0.5rem; */
     cursor: pointer;
     overflow: hidden;
     position: relative;
+    text-align: center;
     display: inline-block;
   }
 
@@ -38,7 +66,7 @@ export const Wrapper = styled.div`
     content: "";
     position: absolute;
     width: 100%;
-    left: 2rem;
+    left: 0rem;
   }
   h2::before,
   h1::before {

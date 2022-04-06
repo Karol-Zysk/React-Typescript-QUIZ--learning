@@ -18,7 +18,17 @@ export const Wrapper = styled.div`
     min-width: 50%;
     max-width: 50%;
   }
+  @media (max-width: 700px) {
+    min-width: 80%;
+    max-width: 80%;
+    padding: 10px;
+  }
   @media (max-width: 600px) {
+    min-width: 90%;
+    max-width: 90%;
+    padding: 10px;
+  }
+  @media (max-width: 320px) {
     min-width: 90%;
     max-width: 90%;
     padding: 10px;
@@ -40,7 +50,7 @@ export const Wrapper = styled.div`
 
   p {
     font-size: 1rem;
-    @media (max-width: 600px) {
+    @media (max-width: 400px) {
       font-size: 0.9rem;
     }
   }
@@ -54,7 +64,7 @@ type ButtonWrapperProps = {
 
 export const ButtonWrapper = styled.div<ButtonWrapperProps>`
   transition: 300ms ease-in-out;
-  @media (max-width: 600px) {
+  @media (max-width: 500px) {
     margin-top: -20px;
     padding: 0;
   }
@@ -64,14 +74,14 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
   button {
     cursor: pointer;
     user-select: none;
-    font-size: 1rem;
+    font-size: 0.9rem;
     @media (max-width: 600px) {
       font-size: 0.8rem;
-      padding: 0.7rem;
+      padding: 0.6rem;
       width: 90%;
     }
     width: 100%;
-    padding: 0.8rem;
+    padding: 0.6rem;
     margin: 5px 0px;
     background: ${({ correct, userClicked }) =>
       correct

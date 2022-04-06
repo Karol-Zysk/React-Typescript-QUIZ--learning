@@ -12,6 +12,7 @@ body{
     padding: 0;
     display: flex;
     justify-content: center;
+    overflow: hidden;
 }
 
 *{
@@ -34,7 +35,10 @@ body{
 
 export const Wrapper = styled.div`
   width: 100vw;
-  height: 75vh;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
 
   flex-direction: row;
   > p {
@@ -48,6 +52,7 @@ export const Wrapper = styled.div`
     }
     color: white;
     font-size: 3rem;
+    margin-top: 1rem;
     @media (max-width: 1000px) {
       font-size: 2.5rem;
     }
@@ -134,13 +139,17 @@ export const Game = styled.div`
   margin-right: auto;
   width: 100%;
   min-height: auto;
-  margin-right: 35rem;
+  overflow: hidden;
 `;
 
 export const Image = styled.img`
   position: absolute;
-  width: 20%;
-  height: 30%;
+  width: 300px;
+  height: 200px;
   right: 5%;
+  @media (max-width: 700px) {
+    left: 50%;
+    margin-left: -150px;
+  }
   top: 35%;
 `;

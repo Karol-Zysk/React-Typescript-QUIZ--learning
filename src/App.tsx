@@ -1,19 +1,20 @@
 import { useState, useEffect } from "react";
 import { fetchQuizQuestions } from "./components/API";
-import { Game, GlobalStyle, Wrapper, Image } from "./components/App.styles";
+import { Game, GlobalStyle, Wrapper, Image } from "./App.styles";
 import crown from "./components/img/crown.png";
 import { link } from "./components/API";
 
 //components
-import QuestionCard from "./components/QuestionCard";
+import QuestionCard from "./components/QuestionCard/QuestionCard";
 
 //Types
 import { QuestionState, Difficulty } from "./components/API";
-import HallOfFame from "./components/HallOfFame";
-import Navbar from "./components/Navbar";
-import { Modal } from "./Modal";
-import { Button } from "./components/Button";
+import HallOfFame from "./components/HallOfFame/HallOfFame";
+import Navbar from "./components/Navbar/Navbar";
+import { Modal } from "./components/Modal/Modal";
+import { Button } from "./small components/Button";
 import { QuestionMark } from "./small components/QuestionMark";
+import { Backdrop } from "./small components/Backdrop";
 
 export type AnswerObject = {
   question: string;
@@ -22,7 +23,7 @@ export type AnswerObject = {
   correctAnswer: string;
 };
 
-const TOTAL_QUESTIONS = 5;
+const TOTAL_QUESTIONS = 25;
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -37,7 +38,6 @@ function App() {
   const [quiz, setQuiz] = useState<boolean>(false);
   const [disableButton, setDisableButton] = useState<boolean>(false);
   const [showHallOfFame, setShowHallOfFame] = useState<boolean>(true);
-  const [questionMarkAppear, setquestionMarkAppear] = useState<boolean>(true);
 
   console.log(window.innerWidth);
   const startQuiz = async () => {
@@ -46,7 +46,7 @@ function App() {
 
     const newQuestions = await fetchQuizQuestions(
       TOTAL_QUESTIONS,
-      Difficulty.EASY
+      Difficulty.MEDIUM
     );
 
     setQuestions(newQuestions);
@@ -173,6 +173,7 @@ function App() {
           nickName={nickName}
           addResult={addResult}
         ></Modal>
+        {!showHallOfFame && <Backdrop />}
       </Wrapper>
     </>
   );

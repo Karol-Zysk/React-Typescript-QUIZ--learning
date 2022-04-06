@@ -21,7 +21,7 @@ export const fetchQuizQuestions = async (
   amount: number,
   difficulty: Difficulty
 ) => {
-  const endpoint = `https://opentdb.com/api.php?amount=${amount}&difficulty=${difficulty}&type=multiple`;
+  const endpoint = `https://opentdb.com/api.php?amount=${amount}&difficulty=${difficulty}&type=multiple&category=18`;
   const data = await (await fetch(endpoint)).json();
   return data.results.map((question: Question) => ({
     ...question,
@@ -31,6 +31,5 @@ export const fetchQuizQuestions = async (
     ]),
   }));
 };
-
 
 export const link = "https://stbible.herokuapp.com/api/results";

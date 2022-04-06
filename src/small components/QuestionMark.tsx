@@ -37,13 +37,13 @@ const Wrapper = styled.div<Props>`
 
   @keyframes x {
     100% {
-      transform: translateX(calc(${window.innerWidth}px - 85px));
+      transform: translateX(calc(${window.innerWidth}px - 75px));
     }
   }
 
   @keyframes y {
     100% {
-      transform: translateY(calc(${window.innerHeight}px - (18vh + 100px)))
+      transform: translateY(calc(${window.innerHeight}px - (18vh + 80px)))
         rotate(360deg);
     }
   }

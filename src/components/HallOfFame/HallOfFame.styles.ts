@@ -18,8 +18,8 @@ export const Wrapper = styled.div<showHall>`
   border-top-right-radius: 25px;
   border-bottom-left-radius: 25px;
   font-size: 1rem;
-  width: 30%;
-  height: 80vh;
+  width: 40%;
+  height: auto;
   position: fixed;
   top: 17vh;
   z-index: 1400;
@@ -27,27 +27,27 @@ export const Wrapper = styled.div<showHall>`
   transform: ${({ showHallOfFame }) =>
     showHallOfFame
       ? "translateX(500%)"
-      : `translateX(calc(${window.innerWidth}px - 0.3*(${window.innerWidth}px)))`};
+      : `translateX(calc(${window.innerWidth}px - 0.4*(${window.innerWidth}px)))`};
   transition: all 300ms ease-out;
   display: flex;
   flex-direction: column;
   justify-content: center;
 
   @media (max-width: 1000px) {
-    font-size: 0.9rem;
-    width: 45%;
+    font-size: 0.8rem;
+    width: 55%;
     transform: ${({ showHallOfFame }) =>
       showHallOfFame
         ? "translateX(500%)"
-        : `translateX(calc(${window.innerWidth}px - 0.45*(${window.innerWidth}px)))`};
+        : `translateX(calc(${window.innerWidth}px - 0.55*(${window.innerWidth}px)))`};
   }
   @media (max-width: 700px) {
-    font-size: 0.8rem;
-    width: 60%;
+    font-size: 0.7rem;
+    width: 65%;
     transform: ${({ showHallOfFame }) =>
       showHallOfFame
         ? "translateX(500%)"
-        : `translateX(calc(${window.innerWidth}px - 0.6*(${window.innerWidth}px)))`};
+        : `translateX(calc(${window.innerWidth}px - 0.65*(${window.innerWidth}px)))`};
   }
   @media (max-width: 500px) {
     width: 90%;

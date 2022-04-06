@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Wrapper, Grid, GridTop } from "./HallOfFame.styles";
-import { link } from "../components/API";
+import { link } from "../API";
 import axios from "axios";
 
 type Props = {
@@ -36,7 +36,7 @@ const HallOfFame: React.FC<Props> = ({ showModal, showHallOfFame }) => {
         <div>Name</div>
         <div>Pts </div> <div>Date:</div>
       </GridTop>
-      {bestResults.slice(0, 15)?.map((result: Result, index) => {
+      {bestResults.slice(0, 13)?.map((result: Result, index) => {
         return (
           <Grid key={index} tabNumber={index}>
             <div className="place">

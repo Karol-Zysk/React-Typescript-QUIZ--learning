@@ -1,5 +1,5 @@
 import React from "react";
-import { Wrapper } from "./components/Modal.styles";
+import { Wrapper } from "./Modal.styles";
 
 type Props = {
   nickName: string;
@@ -23,7 +23,7 @@ export const Modal: React.FC<Props> = ({
   return (
     <Wrapper showModal={showModal}>
       <div>
-        <h1>Great job. Your Score: </h1>
+        <h1>Great job. Your Score: {finalScore} </h1>
 
         <label>Your Nickname</label>
         <input type="text" value={nickName} onChange={setNickNameHandler} />
