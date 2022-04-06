@@ -22,10 +22,12 @@ export const Wrapper = styled.div<showHall>`
   height: 80vh;
   position: fixed;
   top: 17vh;
-  left: 0;
   z-index: 1400;
+
   transform: ${({ showHallOfFame }) =>
-    showHallOfFame ? "translateX(500%)" : "translateX(215%)"};
+    showHallOfFame
+      ? "translateX(500%)"
+      : `translateX(calc(${window.innerWidth}px - 0.3*(${window.innerWidth}px)))`};
   transition: all 300ms ease-out;
   display: flex;
   flex-direction: column;
@@ -34,16 +36,27 @@ export const Wrapper = styled.div<showHall>`
   @media (max-width: 1000px) {
     font-size: 0.9rem;
     width: 45%;
+    transform: ${({ showHallOfFame }) =>
+      showHallOfFame
+        ? "translateX(500%)"
+        : `translateX(calc(${window.innerWidth}px - 0.45*(${window.innerWidth}px)))`};
   }
   @media (max-width: 700px) {
     font-size: 0.8rem;
     width: 60%;
+    transform: ${({ showHallOfFame }) =>
+      showHallOfFame
+        ? "translateX(500%)"
+        : `translateX(calc(${window.innerWidth}px - 0.6*(${window.innerWidth}px)))`};
   }
   @media (max-width: 500px) {
-    width: 100%;
+    width: 90%;
     font-size: 0.7rem;
     padding: 0.5rem;
-    display: none;
+    transform: ${({ showHallOfFame }) =>
+      showHallOfFame
+        ? "translateX(500%)"
+        : `translateX(calc(${window.innerWidth}px - 0.9*(${window.innerWidth}px)))`};
   }
 `;
 

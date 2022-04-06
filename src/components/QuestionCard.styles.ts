@@ -2,16 +2,21 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   color: white;
-  
-  min-width: 50%;
-  max-width: 50%;
+  @media (min-width: 700px) {
+    position: relative;
+    left: -15%;
+  }
+
+  margin-top: 2rem;
+  min-width: 40%;
+  max-width: 40%;
   @media (max-width: 1000px) {
     min-width: 60%;
     max-width: 60%;
   }
   @media (max-width: 800px) {
-    min-width: 80%;
-    max-width: 80%;
+    min-width: 50%;
+    max-width: 50%;
   }
   @media (max-width: 600px) {
     min-width: 90%;
@@ -39,6 +44,7 @@ export const Wrapper = styled.div`
       font-size: 0.9rem;
     }
   }
+  z-index: 100;
 `;
 
 type ButtonWrapperProps = {
@@ -48,6 +54,10 @@ type ButtonWrapperProps = {
 
 export const ButtonWrapper = styled.div<ButtonWrapperProps>`
   transition: 300ms ease-in-out;
+  @media (max-width: 600px) {
+    margin-top: -20px;
+    padding: 0;
+  }
   :hover {
     opacity: 0.9;
   }
@@ -56,7 +66,7 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
     user-select: none;
     font-size: 1rem;
     @media (max-width: 600px) {
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       padding: 0.7rem;
       width: 90%;
     }
